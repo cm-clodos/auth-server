@@ -2,9 +2,9 @@
   "name": "auth-server",
   "version": "1.0.0",
   "description": "Authentication Server",
-  "main": "index.mjs",
+  "main": "server.mjs",
   "scripts": {
-    "start": "nodemon index.mjs",
+    "start": "nodemon server.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
