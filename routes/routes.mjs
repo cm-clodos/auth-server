@@ -16,10 +16,16 @@ router.post('/register', async (req, res) => {
     email: req.body.email,
     password: hashedPassword,
   });
-  const result = await user.save();
-  const {password, ...data} = await result.toJSON();
-  res.send(data);
-
+  const emailExists = await User.findOne({email: req.body.email});
+  if (emailExists) {
+    return res.status(400).send({
+      message: 'Email already exists'
+    });
+  }else {
+    const result= await user.save();
+    const {password, ...data} = await result.toJSON();
+    res.send(data);
+  }
 });
 
 //login mit email und passwort
